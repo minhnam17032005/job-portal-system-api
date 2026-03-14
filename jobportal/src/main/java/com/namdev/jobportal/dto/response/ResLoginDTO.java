@@ -1,0 +1,152 @@
+package com.namdev.jobportal.dto.response;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.namdev.jobportal.entity.Role;
+
+//DTO dùng để trả về thông tin đăng nhập của người dùng sau khi đăng nhập thành công
+public class ResLoginDTO {
+
+    @JsonProperty("access_token")
+    private String accessToken;
+    
+    private UserLogin user;
+
+
+    //lồng class trong class : non-static inner class
+    public static class UserLogin{
+        private Long id;
+        private String email;
+        private String name;
+        private Role role;
+
+        public UserLogin() {
+
+        }
+        public UserLogin(Long id, String email ,String name,Role role) {
+            this.id = id;
+            this.email = email;
+            this.name = name;
+            this.role=role;
+            
+        }
+
+        //getter setter UserLogin
+        public Long getId() {
+        return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Role getRole() {
+            return role;
+        }
+
+        public void setRole(Role role) {
+            this.role = role;
+        }
+
+
+    }
+
+    //lồng class trong class : non-static inner class
+    public static class UserGetAccount{
+        private UserLogin user;
+
+        //getter setter UserGetAccount
+        public UserGetAccount() {
+        }
+
+        public UserGetAccount(UserLogin user) {
+            this.user = user;
+        }
+
+        public UserLogin getUser() {
+            return user;
+        }
+
+        public void setUser(UserLogin user) {
+            this.user = user;
+        }
+    }
+
+
+    //lồng class trong class : non-static inner class
+    public static class UserInsideToken {
+
+    private long id;
+    private String email;
+    private String name;
+
+    //getter setter UserInsideToken
+    public UserInsideToken() {
+    }
+
+    public UserInsideToken(long id, String email, String name) {
+        this.id = id;
+        this.email = email;
+        this.name = name;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+
+    //getter setter ResLoginDTO
+    public UserLogin getUser() {
+        return user;
+    }
+
+    public void setUser(UserLogin user) {
+        this.user = user;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+
+}
+
