@@ -16,6 +16,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.CascadeType;
 
 @Entity
 @Table(name = "subscribers")
@@ -35,7 +36,7 @@ public class Subscriber {
     private String createdBy;
     private String updatedBy;
 
-    @OneToMany(mappedBy="subscriber" , fetch=FetchType.LAZY)
+    @OneToMany(mappedBy="subscriber" , fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     List<SubscriberSkill> subscriberSkills;
 

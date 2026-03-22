@@ -15,6 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.CascadeType;
 
 
 @Entity
@@ -31,11 +32,11 @@ public class Skill {
     private String createdBy;
     private String updatedBy;
 
-    @OneToMany(mappedBy="skill" , fetch=FetchType.LAZY)
+    @OneToMany(mappedBy="skill" , fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     List<SubscriberSkill> subscriberSkills;
 
-    @OneToMany(mappedBy="skill" , fetch=FetchType.LAZY)
+    @OneToMany(mappedBy="skill" , fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     List<JobSkill> jobSkills;
 

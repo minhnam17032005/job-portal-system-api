@@ -21,6 +21,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.CascadeType;
 
 @Entity
 @Table(name = "jobs")
@@ -59,7 +60,7 @@ public class Job {
     List<Resume> resumes;
 
     //relationship 1-1 with JobSkill
-    @OneToMany(mappedBy="job" , fetch=FetchType.LAZY)
+    @OneToMany(mappedBy="job" , fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<JobSkill> jobSkills;
 

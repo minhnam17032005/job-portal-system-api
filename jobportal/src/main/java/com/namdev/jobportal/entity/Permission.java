@@ -2,9 +2,11 @@ package com.namdev.jobportal.entity;
 
 import java.time.Instant;
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.namdev.jobportal.util.SecurityUtil;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -44,7 +46,7 @@ public class Permission {
     private String createdBy;
     private String updatedBy;
 
-    @OneToMany(mappedBy = "permission", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "permission", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     List<PermissionRole> permissionRoles;
 
